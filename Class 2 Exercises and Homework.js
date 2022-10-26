@@ -16,22 +16,34 @@ const Nathalie = {
 }
 
 // 2. console.log best friend's firstName and your favorite food
-console.log('Problem 1-2.')
+console.log(`Problems 1-2:`)
 console.log(`My favorite food is ${Nathalie['favorite food']}.`)
-console.log(`My best friend's name is ${Nathalie.bestFriend.firstName}.`)
+console.log(`My best friend's name is ${Nathalie.bestFriend.firstName}.
+`)
 
 // 3. Create an array to represent this tic-tac-toe board
 // -O-
 // -XO
 // X-X
-
+const board = [
+  ['-','O','-'],
+  ['-','X','O'],
+  ['X','-','X']
+]
 
 // 4. After the array is created, 'O' claims the top right square.
 // Update that value.
-
+board[0][2] = 'O'
 
 // 5. Log the grid to the console.
+console.log(`Problems 3-5:`)
+console.log(`This is the current status of the game:`)
 
+// Loop through each row (board[0], board[1], and board[2])
+for (let row = 0; row < 3; row++) {
+  // In each row, print each of the three tic-tac-toe [squares] separated by a space
+  console.log(`[${board[row][0]}] [${board[row][1]}] [${board[row][2]}]`)
+}
 
 // 6. You are given an email as string myEmail, make sure it is in correct email format.
 // Should be 1 or more characters, then @ sign, then 1 or more characters, then dot, then one or more characters - no whitespace
