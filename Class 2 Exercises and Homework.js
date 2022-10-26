@@ -1,13 +1,24 @@
 // 1. Create an object representation of yourself
-// Should include: 
+// Should include:
 // - firstName
 // - lastName
 // - 'favorite food'
 // - bestFriend (object with the same 3 properties as above)
-
+const Nathalie = {
+  firstName: "Nathalie",
+  lastName: "Luna Rivera",
+  'favorite food': "Licorice",
+  bestFriend: {
+    firstName: "Princess",
+    lastName: "Chavez",
+    'favorite food': "Tacos"
+  }
+}
 
 // 2. console.log best friend's firstName and your favorite food
-
+console.log('Problem 1-2.')
+console.log(`My favorite food is ${Nathalie['favorite food']}.`)
+console.log(`My best friend's name is ${Nathalie.bestFriend.firstName}.`)
 
 // 3. Create an array to represent this tic-tac-toe board
 // -O-
@@ -36,7 +47,7 @@
 const assignmentDate = '1/21/2019';
 
 
-// 8. Create a new Date instance to represent the dueDate.  
+// 8. Create a new Date instance to represent the dueDate.
 // This will be exactly 7 days after the assignment date.
 
 
