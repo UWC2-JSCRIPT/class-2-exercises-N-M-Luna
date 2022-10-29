@@ -16,7 +16,7 @@ const Nathalie = {
 }
 
 // 2. console.log best friend's firstName and your favorite food
-console.log(`Problems 1-2:`)
+console.log(`Problems 1-2.`)
 console.log(`My favorite food is ${Nathalie['favorite food']}.`)
 console.log(`My best friend's name is ${Nathalie.bestFriend.firstName}.
 `)
@@ -26,9 +26,9 @@ console.log(`My best friend's name is ${Nathalie.bestFriend.firstName}.
 // -XO
 // X-X
 const board = [
-  ['-','O','-'],
-  ['-','X','O'],
-  ['X','-','X']
+  ['-', 'O', '-'],
+  ['-', 'X', 'O'],
+  ['X', '-', 'X']
 ]
 
 // 4. After the array is created, 'O' claims the top right square.
@@ -36,7 +36,7 @@ const board = [
 board[0][2] = 'O'
 
 // 5. Log the grid to the console.
-console.log(`Problems 3-5:`)
+console.log(`Problems 3-5.`)
 console.log(`This is the current status of the game:`)
 
 // Loop through each row (board[0], board[1], and board[2])
@@ -51,21 +51,56 @@ for (let row = 0; row < 3; row++) {
 // Hints:
 // - Use rubular to check a few emails: https://rubular.com/
 // - Use regexp test method https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test
+const IsEmail = myEmail => {
+  // Address pattern [Nat Note]: If there's a period before the @, it doesn't catch any substring before it.
+  const regex = /\w+@\w+[.]\w+/
 
+  // Print the test result and return the appropriate boolean.
+  if (regex.test(myEmail)) {
+    console.log(`The string ${myEmail} is an e-mail address.`)
+    return true
+  } else {
+    console.log(`The string ${myEmail} is not an e-mail address.`)
+    return false
+  }
+}
+
+console.log(`Problem 6.`)
+const testEmail = `nat.luna.64@gmail.com`
+const testResult = IsEmail(testEmail)
 
 // 7. You are given an assignmentDate as a string in the format "month/day/year"
 // i.e. '1/21/2019' - but this could be any date.
 // Convert this string to a Date
-const assignmentDate = '1/21/2019';
+let dueDate
+const StringToDate = str => {
 
+  //Split the date into year, month index, and day.
+  const datePart = str.split(`/`)
+  const year = datePart[2]
+  const monthIndex = datePart[0] - 1
+  const day = datePart[1]
 
-// 8. Create a new Date instance to represent the dueDate.
-// This will be exactly 7 days after the assignment date.
+  //Create the Date object with the year, month index, and day
+  const returnDate = new Date(year, monthIndex, day)
+  console.log(`String is '${str}'.`)
+  console.log(`Date is ${returnDate}.`)
 
+  // 8. Create a new Date instance to represent the dueDate.
+  // This will be exactly 7 days after the assignment date.
+  const sevenDaysLater = parseInt(day) + 7
+  dueDate = new Date(year, monthIndex, sevenDaysLater)
+  console.log(`And the due Date is ${dueDate}.`)
+  return returnDate
+}
+
+console.log(`Problems 7-8.`)
+const assignmentDateStr = '1/21/2019'
+const assignmentDate = StringToDate(assignmentDateStr)
 
 // 9. Use dueDate values to create an HTML time tag in format
 // <time datetime="YYYY-MM-DD">Month day, year</time>
-// I have provided a months array to help
+// I have provided a months array to help.
 const months = [
   'January',
   'February',
@@ -81,5 +116,35 @@ const months = [
   'December'
 ];
 
+function BuildTimeTag(myDate) {
+  // Get strings for year, month, and day
+  const year = myDate.getFullYear() // YYYY
+  const mIndex = myDate.getMonth() // M or MM
+  const month = months[mIndex] // "month"
+  const day = myDate.getDate() // D or DD
 
-// 10. log this value using console.log
+  // Get 2-digit "numbers" for month and day
+  const monthNum = parseInt(mIndex) + 1
+  const dayNum = parseInt(day)
+  const mm =  MakeTwoDigits(monthNum)
+  const dd = MakeTwoDigits(dayNum)
+
+  // Build the time tag
+  const timeTag = `<time datetime="${year}-${mm}-${dd}">${month} ${day}, ${year}</time>`
+  // 10. log this value using console.log
+  console.log(timeTag)
+  return timeTag
+}
+
+function MakeTwoDigits(num){
+  const str = num.toString()
+  let twoDigitNum = str
+  if (str.length < 2) {
+    twoDigitNum = `0${str}`
+  }
+  return twoDigitNum
+}
+
+console.log(`Problems 9-10.
+  Here is a time tag with the due date for the assignment.`)
+BuildTimeTag(dueDate)
